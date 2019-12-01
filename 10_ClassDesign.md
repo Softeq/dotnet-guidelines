@@ -77,7 +77,7 @@ This means that two classes know about each other's public members or rely on ea
 **Exception:** Domain models such as defined in [Domain-Driven Design](http://domaindrivendesign.org/) tend to occasionally involve bidirectional associations that model real-life associations. In those cases, make sure they are really necessary, and if they are, keep them in.
 
 ## Prefer using classes with both state and behavior (SDCS-1011) [2]
-In general, if you find a lot of data-only classes in your code base, you probably also have a few (static) classes with a lot of behavior (see [SDCS-1005](#SDCS-1005)). Use the principles of object-orientation explained in this section and move the logic close to the data it applies to.
+In general, if you find a lot of data-only classes in your code base, you probably also have a few (static) classes with a lot of behavior (see [SDCS-1005](#avoid-static-classes-sdcs-1005-2)). Use the principles of object-orientation explained in this section and move the logic close to the data it applies to.
 
 **Exception:** The only exceptions to this rule are classes that are used to transfer data over a communication channel, also called [Data Transfer Objects](http://martinfowler.com/eaaCatalog/dataTransferObject.html), or a class that wraps several parameters of a method.
 

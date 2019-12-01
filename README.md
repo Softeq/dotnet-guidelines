@@ -17,4 +17,4 @@ All rules must be named in the following format: **Meaningful title of the rule 
 * **\[1\]** is rule a rule severity
 
 ## Table of contents
-TBD
+* [Class design](10_ClassDesign.md)
