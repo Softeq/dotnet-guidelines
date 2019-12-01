@@ -25,3 +25,4 @@ All rules must be named in the following format: **Meaningful title of the rule 
 * [16 Framework](16_Framework.md)
 * [17 Documentation](17_Documentation.md) 
 * [18 Layout](18_Layout.md)
+* [Important resources](99_ImportantResources.md)
