@@ -17,7 +17,8 @@ All rules must be named in the following format: **Meaningful title of the rule 
 * **\[1\]** is rule a rule severity
 
 ## Table of contents
-* [Class design](10_ClassDesign.md)
-* [Member design](11_MemberDesign.md)
-* [Miscellaneous design](12_MiscellaneousDesign.md)
-* [Maintainability](13_Maintainability.md)
+* [10 Class design](10_ClassDesign.md)
+* [11 Member design](11_MemberDesign.md)
+* [12 Miscellaneous design](12_MiscellaneousDesign.md)
+* [13 Maintainability](13_Maintainability.md)
+* [14 Naming](14_Naming.md)
