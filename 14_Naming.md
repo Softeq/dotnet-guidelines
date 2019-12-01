@@ -1,11 +1,11 @@
 # Naming
 ## Use US English (SDCS-1401) [1]
 All type members, parameters and variables should be named using words from the American English language.
-* Choose easily readable, preferably grammatically correct names. For example, HorizontalAlignment is more readable than AlignmentHorizontal.
-* Favor readability over brevity. The property name CanScrollHorizontally is better than ScrollableX (an obscure reference to the X-axis).
+* Choose easily readable, preferably grammatically correct names. For example, `HorizontalAlignment` is more readable than `AlignmentHorizontal`.
+* Favor readability over brevity. The property name `CanScrollHorizontally` is better than `ScrollableX` (an obscure reference to the X-axis).
 * Avoid using names that conflict with keywords of widely used programming languages.
 
-**Exception:** In most projects, you will use words and phrases from your domain and names specific to your company. Visual Studio's Static Code Analysis performs a spelling check on all code, so you may need to add those terms to a [Custom Code Analysis Dictionary](http://blogs.msdn.com/fxcop/archive/2007/08/20/new-for-visual-studio-2008-custom-dictionaries.aspx).
+**Exception:** In most projects, you will use words and phrases from your domain and names specific to your company.
 
 ## Use proper casing for language elements (SDCS-1402) [1]
 | Language element        | Casing                       | Example          |
@@ -52,8 +52,8 @@ DB
 ```
 
 ## Name a member, parameter or variable according to its meaning and not its type (SDCS-1407) [2] 
-* Use functional names. For example, GetLength is a better name than GetInt.
-* Don't use terms like Enum, Class or Struct in a name.
+* Use functional names. For example, `GetLength` is a better name than `GetInt`.
+* Don't use terms like `Enum`, `Class` or `Struct` in a name.
 
 ## Name types using nouns, noun phrases or adjective phrases (SDCS-1408) [2]
 Bad examples include `SearchExamination` (a page to search for examinations), Common (does not end with a noun, and does not explain its purpose) and `SiteSecurity` (although the name is technically okay, it does not say anything about its purpose). Good examples include `BusinessBinder`, `SmartTextBox`, or `EditableSingleCustomer`.
@@ -68,7 +68,7 @@ Bad examples include `SearchExamination` (a page to search for examinations), Co
 // GOOD
 public class Employee
 { 
-    public Employee Get() 
+    public Employee Get()
     {
     } 
     

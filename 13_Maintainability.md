@@ -121,8 +121,8 @@ Use [Object Initializers](http://msdn.microsoft.com/en-us/library/bb384062.aspx)
 // GOOD
 var startInfo = new ProcessStartInfo("myapp.exe") 
 {
-   StandardOutput = Console.Output,
-   UseShellExecute = true 
+    StandardOutput = Console.Output,
+    UseShellExecute = true 
 };
 ```
 ```csharp
@@ -195,7 +195,7 @@ else Bar(); // which 'if' goes with the 'else'?
 ```
 
 ## Always add a default block after the last case in a switch statement (SDCS-1318) [2]
-Add a descriptive comment if the default block is supposed to be empty. Moreover, if that block is not supposed to be reached throw an InvalidOperationException to detect future changes that may fall through the existing cases. This ensures better code, because all paths the code can travel have been thought about.
+Add a descriptive comment if the default block is supposed to be empty. Moreover, if that block is not supposed to be reached throw an `InvalidOperationException` to detect future changes that may fall through the existing cases. This ensures better code, because all paths the code can travel have been thought about.
 ```csharp
 void Foo(string answer) 
 { 

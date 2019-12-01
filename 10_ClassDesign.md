@@ -1,13 +1,13 @@
 # Class Design
 ## A class or interface should have a single purpose (SDCS-1001) [1]
-A class or interface should have a single purpose within the system it functions in. In general, a class either represents a primitive type like an email or ISBN number, an abstraction of some business concept, a plain data structure, or is responsible for orchestrating the interaction between other classes. It is never a combination of those. This rule is widely known as the [Single Responsibility Principle](http://www.objectmentor.com/resources/articles/srp.pdf), one of the [S.O.L.I.D](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)). principles.
+A class or interface should have a single purpose within the system it functions in. In general, a class either represents a primitive type like an email or ISBN number, an abstraction of some business concept, a plain data structure, or is responsible for orchestrating the interaction between other classes. It is never a combination of those. This rule is widely known as the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), one of the [S.O.L.I.D](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)). principles.
 
-**Tip:** A class with the word And in it is an obvious violation of this rule.
+**Tip:** A class with the word `And` in it is an obvious violation of this rule.
 
 **Note:** If you create a class representing a primitive type you can greatly simplify its use by making it immutable.
 
 ## An interface should be small and focused (SDCS-1002) [2] 
-Interfaces should have a name that clearly explains their purpose or role in the system. Do not combine many vaguely related members on the same interface just because they were all on the same class. Separate the members based on the responsibility of those members, so that callers only need to call or implement the interface related to a particular task. This rule is more commonly known as the [Interface Segregation Principle](http://www.objectmentor.com/resources/articles/isp.pdf).
+Interfaces should have a name that clearly explains their purpose or role in the system. Do not combine many vaguely related members on the same interface just because they were all on the same class. Separate the members based on the responsibility of those members, so that callers only need to call or implement the interface related to a particular task. This rule is more commonly known as the [Interface Segregation Principle](https://en.wikipedia.org/wiki/Interface_segregation_principle).
 
 ## Use an interface rather than a base class to support multiple implementations (STCS-1003) [2]
 If you want to expose an extension point from your class, expose it as an interface rather than as a base class. You don't want to force users of that extension point to derive their implementations from a base class that might have an undesired behavior. However, for their convenience you may implement a(n abstract) default implementation that can serve as a starting point.
@@ -52,7 +52,7 @@ PocketBook pocketBook = new PocketBook();
 pocketBook.Print(); // Outputs "Printing PocketBook "
 ((Book)pocketBook).Print(); // Outputs "Printing Book"
 ```
-It should not make a difference whether you call Print() through a reference to the base class or through the derived class.
+It should not make a difference whether you call `Print()` through a reference to the base class or through the derived class.
 
 ## It should be possible to treat a derived object as if it were a base class object (SDCS-1007) [1]
 In other words, you should be able to use a reference to an object of a derived class wherever a reference to its base class object is used without knowing the specific derived class. A very notorious example of a violation of this rule is throwing a NotSupportedException when overriding some of the base-class methods. A less subtle example is not honoring the behavior expected by the base class.

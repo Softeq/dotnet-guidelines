@@ -11,14 +11,14 @@ bool success = int.TryParse(text, out int number);
 The message should explain the cause of the exception, and clearly describe what needs to be done to avoid the exception.
 
 ## Throw the most specific exception that is appropriate (SDCS-1203) [2]
-For example, if a method receives a null argument, it should throw ArgumentNullException instead of its base type ArgumentException.
+For example, if a method receives a null argument, it should throw `ArgumentNullException` instead of its base type `ArgumentException`.
 
 ## Don't swallow errors by catching generic exceptions (SDCS-1204) [1]
 Avoid swallowing errors by catching non-specific exceptions, such as `Exception`, `SystemException`, and so on, in application code. Only top-level code, such as a last-chance exception handler, should catch a non-specific exception for logging purposes and a graceful shutdown of the application.
 
 ## Properly handle exceptions in asynchronous code (SDCS-1205) [2]
-When throwing or handling exceptions in code that uses `async/await` or a `Task` remember the following two rules:
-* Exceptions that occur within an async/await block and inside a Task's action are propagated to the awaiter.
+When throwing or handling exceptions in code that uses `async`/`await` or a `Task` remember the following two rules:
+* Exceptions that occur within an `async`/`await` block and inside a Task's action are propagated to the awaiter.
 * Exceptions that occur in the code preceding the asynchronous block are propagated to the caller.
 
 ## Always check an event handler delegate for null (SDCS-1206) [1]
@@ -85,7 +85,7 @@ public IEnumerable GetGoldMemberCustomers()
     return query; 
 }
 ```
-Since LINQ queries use deferred execution, returning query will actually return the expression tree representing the above query. Each time the caller evaluates this result using a foreach cycle or similar, the entire query is re-executed resulting in new instances of GoldMember every time. Consequently, you cannot use the == operator to compare multiple GoldMember instances. Instead, always explicitly evaluate the result of a LINQ query using `ToList()`, `ToArray()` or similar methods.
+Since LINQ queries use deferred execution, returning query will actually return the expression tree representing the above query. Each time the caller evaluates this result using a foreach cycle or similar, the entire query is re-executed resulting in new instances of `GoldMember` every time. Consequently, you cannot use the == operator to compare multiple `GoldMember` instances. Instead, always explicitly evaluate the result of a LINQ query using `ToList()`, `ToArray()` or similar methods.
 
 ## Do not use this and base prefixes unless it is required (SDCS-1211) [1] 
 In a class hierarchy, it is not necessary to know at which level a member is declared to use it. Refactoring derived classes is harder if that level is fixed in the code.
