@@ -12,5 +12,7 @@ In the beginning of each source file that was created by Softeq team on the proj
 // http://www.softeq.com
 ```
 Where [customer name] - the name of a client company (or the name of a client if he doesn’t represent a company). This name can be taken from JIRA or you can ask PM of the project. The name of a company (or the name a client) must be grammatically correct, it’s a very important point for a client.
+
 **Note:** If your IDE doesn’t support automatic filling of the [customer name] value during the file creation, you should fill this value manually after copy-pasting.
+
 **Tip:** In R# you need to run Cleanup Code to add file header template
