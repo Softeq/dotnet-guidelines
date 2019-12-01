@@ -11,10 +11,10 @@ Each rule in this document has its importance level:
 | 2                 | Recommended guidelines                                                           |
 
 ## Guidelines rules naming convention
-All rules must be named in the following format: Meaningful title of the rule (SDSC-1234) \[1\], where 
-* SDCS is Softeq Development CSharp abbreviation 
-* 1234 is rule index; 12 is rule group index (e.g. class design guidelines), 34 is rule index.
-* \[1\] is rule a rule severity
+All rules must be named in the following format: **Meaningful title of the rule (SDSC-1234) \[1\]**, where 
+* **SDCS** is Softeq Development CSharp abbreviation 
+* **1234** is rule index; 12 is rule group index (e.g. class design guidelines), 34 is rule index.
+* **\[1\]** is rule a rule severity
 
 ## Table of contents
 TBD
