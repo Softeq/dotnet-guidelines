@@ -18,3 +18,4 @@ All rules must be named in the following format: **Meaningful title of the rule 
 
 ## Table of contents
 * [Class design](10_ClassDesign.md)
+* [Member design](11_MemberDesign.md)

@@ -83,7 +83,7 @@ In general, if you find a lot of data-only classes in your code base, you probab
 
 ## Classes should protect the consistency of their internal state (SDCS-1012) [2]
 Validate incoming arguments from public members. For example:
-```charp
+```csharp
 public void SetAge(int years)
 {
     AssertValueIsInRange(years, 0, 200, nameof(years));

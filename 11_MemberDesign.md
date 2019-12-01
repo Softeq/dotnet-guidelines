@@ -16,12 +16,12 @@ Similarly to rule [SDCS-1001](10_ClassDesign.md#a-class-or-interface-should-have
 ## Don't expose stateful objects through static members (SDCS-1104) [2]
 A stateful object is an object that contains many properties and lots of behavior behind it. If you expose such an object through a static property or method of some other object, it will be very difficult to refactor or cover a class with unit tests that relies on such a stateful object. In general, introducing a construction like that is a great example of violating many of the guidelines of this chapter.
 
-A classic example of this is the HttpContext.Current property, part of ASP.NET. Many see the HttpContext class as a source of a lot of ugly code. In fact, the testing guideline [Isolate the Ugly Stuff](http://codebetter.com/jeremymiller/2005/10/21/haacked-on-tdd-and-jeremys-first-rule-of-tdd/) often refers to this class.
+A classic example of this is the HttpContext.Current property, part of ASP.NET. Many see the `HttpContext` class as a source of a lot of ugly code. In fact, the testing guideline [Isolate the Ugly Stuff](http://codebetter.com/jeremymiller/2005/10/21/haacked-on-tdd-and-jeremys-first-rule-of-tdd/) often refers to this class.
 
-## Return an IEnumerable<T> or IReadOnly*<T> instead of a concrete collection class (SDCS-1105) [2]
-You generally don't want callers to be able to change an internal collection, so don't return arrays, lists or other collection classes directly. Instead, return an IEnumerable<T>, IReadOnlyCollection<T>, IReadOnlyList<T> or IReadOnlyDictionary<TKey, TValue>.
+## Return an `IEnumerable<T>` or `IReadOnly*<T>` instead of a concrete collection class (SDCS-1105) [2]
+You generally don't want callers to be able to change an internal collection, so don't return arrays, lists or other collection classes directly. Instead, return an IEnumerable<T>, `IReadOnlyCollection<T>`, `IReadOnlyList<T>` or `IReadOnlyDictionary<TKey, TValue>`.
 
-**Exception:** Immutable collections such as ImmutableArray<T>, ImmutableList<T> and ImmutableDictionary<TKey, TValue> prevent modifications from the outside and are thus allowed.
+**Exception:** Immutable collections such as `ImmutableArray<T>`, `ImmutableList<T>` and `ImmutableDictionary<TKey, TValue>` prevent modifications from the outside and are thus allowed.
 
 ## Define parameters as specific as possible (SDCS-1106) [2]
 If your member needs a specific piece of data, define parameters as specific as that and don't take a container object instead. For instance, consider a method that needs a connection string that is exposed through a central IConfiguration interface. Rather than taking a dependency on the entire configuration, just define a parameter for the connection string. This not only prevents unnecessary coupling, it also improved maintainability in the long run.
@@ -37,4 +37,4 @@ Having properties that cannot be used at the same time typically signals a type 
 This violation is often seen in domain models and introduces all kinds of conditional logic related to those conflicting rules, causing a ripple effect that significantly increases the maintenance burden.
 
 ## Properties, arguments and return values representing collections or tasks should never be null (SDCS-1109) [1]
-Returning null can be unexpected by the caller. Always return an empty collection instead of a null reference. When your member returns Task or Task<T>, return Task.CompletedTask or Task.FromResult(). This also prevents cluttering your code base with additional checks for null.
+Returning null can be unexpected by the caller. Always return an empty collection instead of a null reference. When your member returns `Task` or `Task<T>`, return `Task.CompletedTask` or `Task.FromResult()`. This also prevents cluttering your code base with additional checks for null.
