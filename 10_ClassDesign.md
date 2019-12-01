@@ -30,20 +30,20 @@ Not only does the new keyword break Polymorphism, one of the most essential obje
 // Base class
 public class Book 
 {
-   public virtual void Print() 
-   {
-       Console.WriteLine("Printing Book");
-   } 
+    public virtual void Print() 
+    {
+        Console.WriteLine("Printing Book");
+    } 
 }
 ```
 ```csharp
 // Inherited class
 public class PocketBook : Book 
 {
-   public new void Print()
-   {
-       Console.WriteLine("Printing PocketBook");
-   } 
+    public new void Print()
+    {
+        Console.WriteLine("Printing PocketBook");
+    } 
 }
 ```
 This will cause behavior that you would not normally expect from class hierarchies:
