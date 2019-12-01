@@ -20,3 +20,4 @@ All rules must be named in the following format: **Meaningful title of the rule 
 * [Class design](10_ClassDesign.md)
 * [Member design](11_MemberDesign.md)
 * [Miscellaneous design](12_MiscellaneousDesign.md)
+* [Maintainability](13_Maintainability.md)
