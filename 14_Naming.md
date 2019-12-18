@@ -162,7 +162,7 @@ If the name of an extension method conflicts with another member or extension me
 ## Post-fix asynchronous methods with Async of TaskAsync (SDCS-1420) [2]
 The general convention for methods that return `Task` or `Task<TResult>` is to post-fix them with Async, but if such a method already exists, use `TaskAsync` instead.
 
-## Identifiers that refer to a collection type should have plural names [2]
+## Identifiers that refer to a collection type should have plural names (SDCS-1421) [2]
 
-## Use correct names for enums [1]
+## Use correct names for enums (SDCS-1422) [1]
 When you define a simple enum (e.g. `SeasonOfYear`) use singular form, in case flag enum use plural form (e.g. `FilePermissions`). 
