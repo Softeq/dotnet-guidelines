@@ -1,5 +1,5 @@
 # Class Design
-## A class or interface should have a single purpose (SDCS-1001) [1][](#SDCS-1001)
+## A class or interface should have a single purpose (SDCS-1001) [1][](#sdcs-1001)
 A class or interface should have a single purpose within the system it functions in. In general, a class either represents a primitive type like an email or ISBN number, an abstraction of some business concept, a plain data structure, or is responsible for orchestrating the interaction between other classes. It is never a combination of those. This rule is widely known as the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), one of the [S.O.L.I.D](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)). principles.
 
 **Tip:** A class with the word `And` in it is an obvious violation of this rule.
@@ -76,7 +76,7 @@ This means that two classes know about each other's public members or rely on ea
 
 **Exception:** Domain models such as defined in [Domain-Driven Design](http://domaindrivendesign.org/) tend to occasionally involve bidirectional associations that model real-life associations. In those cases, make sure they are really necessary, and if they are, keep them in.
 
-## Prefer using classes with both state and behavior (SDCS-1011) [2][ ](#SDCS-1011)
+## Prefer using classes with both state and behavior (SDCS-1011) [2][ ](#sdcs-1011)
 In general, if you find a lot of data-only classes in your code base, you probably also have a few (static) classes with a lot of behavior (see [SDCS-1005](#avoid-static-classes-sdcs-1005-2)). Use the principles of object-orientation explained in this section and move the logic close to the data it applies to.
 
 **Exception:** The only exceptions to this rule are classes that are used to transfer data over a communication channel, also called [Data Transfer Objects](http://martinfowler.com/eaaCatalog/dataTransferObject.html), or a class that wraps several parameters of a method.
