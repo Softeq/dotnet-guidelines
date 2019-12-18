@@ -19,7 +19,7 @@ A stateful object is an object that contains many properties and lots of behavio
 A classic example of this is the HttpContext.Current property, part of ASP.NET. Many see the `HttpContext` class as a source of a lot of ugly code. In fact, the testing guideline Isolate the Ugly Stuff often refers to this class.
 
 ## Return an `IEnumerable<T>` or `IReadOnly*<T>` instead of a concrete collection class (SDCS-1105) [2]
-You generally don't want callers to be able to change an internal collection, so don't return arrays, lists or other collection classes directly. Instead, return an IEnumerable<T>, `IReadOnlyCollection<T>`, `IReadOnlyList<T>` or `IReadOnlyDictionary<TKey, TValue>`.
+You generally don't want callers to be able to change an internal collection, so don't return arrays, lists or other collection classes directly. Instead, return an `IEnumerable<T>`, `IReadOnlyCollection<T>`, `IReadOnlyList<T>` or `IReadOnlyDictionary<TKey, TValue>`.
 
 **Exception:** Immutable collections such as `ImmutableArray<T>`, `ImmutableList<T>` and `ImmutableDictionary<TKey, TValue>` prevent modifications from the outside and are thus allowed.
 
