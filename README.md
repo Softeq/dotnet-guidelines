@@ -14,8 +14,8 @@ Each rule in this document has its importance level:
 
 | Icon  			| Description                                                                      |
 | :---------------- | :------------------------------------------------------------------------------- |
-| <img src ="Images/fullRecover.png" width="50" height="50">   | Fully covered by Re-sharper                                                      |
-| <img src ="Images/partlyRecover.png" width="50" height="50">  | Partly covered by Re-sharper                                                     |
+| <img src ="Images/fullCover.png" width="50" height="50">   | Fully covered by Re-sharper                                                      |
+| <img src ="Images/partlyCover.png" width="50" height="50">  | Partly covered by Re-sharper                                                     |
 |                   | If no image, rules aren't covered by Re-sharper								   |
 
 ## Guidelines rules naming convention

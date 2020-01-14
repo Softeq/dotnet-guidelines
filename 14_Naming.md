@@ -1,5 +1,5 @@
 # Naming
-## Use US English (SDCS-1401) [1]
+## Use US English (SDCS-1401) [1] <img src ="Images/partlyCover.png" width="16" height="16">
 All type members, parameters and variables should be named using words from the American English language.
 * Choose easily readable, preferably grammatically correct names. For example, `HorizontalAlignment` is more readable than `AlignmentHorizontal`.
 * Favor readability over brevity. The property name `CanScrollHorizontally` is better than `ScrollableX` (an obscure reference to the X-axis).
@@ -7,7 +7,7 @@ All type members, parameters and variables should be named using words from the 
 
 **Exception:** In most projects, you will use words and phrases from your domain and names specific to your company.
 
-## Use proper casing for language elements (SDCS-1402) [1]
+## Use proper casing for language elements (SDCS-1402) [1] <img src ="Images/partlyCover.png" width="16" height="16">
 | Language element        | Casing                       | Example          |
 | :---------------------- | :--------------------------- |----------------- |
 | Class, Struct           | Pascal                       | `AppDomain`      |
@@ -29,7 +29,7 @@ All type members, parameters and variables should be named using words from the 
 ## Don’t use protected, internal and public fields (SDCS-1403) [1]
 **Note:** They can be replaced with auto properties with appropriate access modifier.
 
-## Don't include numbers in variables, parameters and type members (SDCS-1404) [2]
+## Don't include numbers in variables, parameters and type members (SDCS-1404) [2] <img src ="Images/fullCover.png" width="16" height="16">
 In most cases they are a lazy excuse for not defining a clear and intention-revealing name.
 
 ## Use only well-known abbreviations (SDCS-1406) [2]
@@ -159,7 +159,7 @@ It is good practice to prefix the method that handles an event with On. For exam
 ## Group extension methods in a class suffixed with Extensions (SDCS-1419) [2]
 If the name of an extension method conflicts with another member or extension method, you must prefix the call with the class name. Having them in a dedicated class with the Extensions suffix improves readability.
 
-## Post-fix asynchronous methods with Async of TaskAsync (SDCS-1420) [2]
+## Post-fix asynchronous methods with Async of TaskAsync (SDCS-1420) [2] <img src ="Images/fullCover.png" width="16" height="16">
 The general convention for methods that return `Task` or `Task<TResult>` is to post-fix them with Async, but if such a method already exists, use `TaskAsync` instead.
 
 ## Identifiers that refer to a collection type should have plural names (SDCS-1421) [2]

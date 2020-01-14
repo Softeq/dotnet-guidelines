@@ -2,7 +2,7 @@
 ## Allow properties to be set in any order (SDCS-1101) [1]
 Properties should be stateless with respect to other properties, i.e. there should not be a difference between first setting property `DataSource` and then `DataMember` or vice-versa.
 
-## Use a method instead of a property (SDCS-1102) [2]
+## Use a method instead of a property (SDCS-1102) [2] <img src ="Images/partlyCover.png" width="16" height="16">
 * If the work is more expensive than setting a field value.
 * If it represents a conversion such as the `Object.ToString` method.
 * If it returns a different result each time it is called, even if the arguments didn't change. For example, the `NewGuid` method returns a different value each time it is called.
