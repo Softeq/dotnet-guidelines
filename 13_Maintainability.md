@@ -2,7 +2,7 @@
 ## Make all members private and types internal sealed by default (SDCS-1302) [2]
 To make a more conscious decision on which members to make available to other classes, first restrict the scope as much as possible. Then carefully decide what to expose as a public member or type.
 
-## Avoid conditions with double negatives (SDCS-1303) [2] <img src ="Images/fullCover.png" width="16" height="16">
+## Avoid conditions with double negatives (SDCS-1303) [2]
 Although a property like customer.HasNoOrders makes sense, avoid using it in a negative condition like this:
 ```csharp
 bool hasOrders = !customer.HasNoOrders;
@@ -159,7 +159,7 @@ while (condition != true)
 while (((condition == true) == true) == true)// where do you stop?
 ```
 
-## Don't change a loop variable inside a for or foreach loop (SDCS-1315) [1] <img src ="Images/fullCover.png" width="16" height="16">
+## Don't change a loop variable inside a for or foreach loop (SDCS-1315) [1]
 Updating the loop variable within the loop body is generally considered confusing, even more so if the loop variable is modified in more than one place. Although this rule also applies to foreach loops, an enumerator will typically detect changes to the collection the foreach loop is iteration over.
 ```csharp
 for (int index = 0; index < 10; ++index) 
@@ -171,7 +171,7 @@ for (int index = 0; index < 10; ++index)
 }
 ```
 
-## Always add a block after keywords such as if, else, while, for and foreach (SDCS-1317) [1] <img src ="Images/partlyCover.png" width="16" height="16">
+## Always add a block after keywords such as if, else, while, for and foreach (SDCS-1317) [1] <img src ="Images/fullCover.png" width="16" height="16">
 This rules avoids possible confusion in statements of the form.
 ```csharp
 // GOOD

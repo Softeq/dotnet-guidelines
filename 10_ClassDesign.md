@@ -20,7 +20,7 @@ Interfaces are a very effective mechanism for decoupling classes from each other
 * They allow the replacement of the actual implementation with a dummy implementation or a fake object in a unit test;
 * Using a dependency injection framework you can centralize the choice of which class is used whenever a specific interface is requested.
 
-## Avoid static classes (SDCS-1005) [2] <img src ="Images/fullCover.png" width="16" height="16">
+## Avoid static classes (SDCS-1005) [2]
 With the exception of extension method containers, static classes very often lead to badly designed code. They are also very difficult, if not impossible, to test in isolation, unless you're willing to use some very hacky tools.
 
 ## Don't hide inherited members with the new keyword (SDCS-1006) [1] <img src ="Images/partlyCover.png" width="16" height="16">

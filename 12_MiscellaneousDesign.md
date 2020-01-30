@@ -70,7 +70,7 @@ class MyClass<T>
 }
 ```
 
-## Evaluate the result of a LINQ expression before returning it (SDCS-1210) [1] <img src ="Images/partlyCover.png" width="16" height="16">
+## Evaluate the result of a LINQ expression before returning it (SDCS-1210) [1] <img src ="Images/partlyCover.png" width="16" height="16" title="Shows suggestion to replace return LINQ expression using variable">
 Consider the following code snippet
 ```csharp
 public IEnumerable GetGoldMemberCustomers()
