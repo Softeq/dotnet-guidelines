@@ -32,26 +32,17 @@ All type members, parameters and variables should be named using words from the 
 ## Don't include numbers in variables, parameters and type members (SDCS-1404) [2]
 In most cases they are a lazy excuse for not defining a clear and intention-revealing name.
 
-## Use only well-known abbreviations (SDCS-1406) [2]
+## Don't prefix fields (SDCS-1405) [1]
+For example, don't use g_ or s_ to distinguish static from non-static fields. A method in which it is difficult to distinguish local variables from member fields is generally too big. Examples of incorrect identifier names are: mUserName, m_loginTime.
+
+**Exception:** this rule is not applicable for private fields.
+
+## Don't use abbreviations (SDCS-1406) [2]
 For example, use OnButtonClick rather than OnBtnClick. Avoid single character variable names, such as i or q. Use index or query instead.
 
-**Note:** Use camel casing for abbreviations.
+**Exceptions:** Use well-known abbreviations that are widely accepted or well-known in your work domain. For instance, use UI instead of UserInterface.
 
-```csharp
-// Good
-Http
-Io
-Db
-```
-
-```csharp
-/// Bad
-HTTP
-IO
-DB
-```
-
-## Name a member, parameter or variable according to its meaning and not its type (SDCS-1407) [2] 
+## Name a member, parameter or variable according to its meaning and not its type (SDCS-1407) [2]
 * Use functional names. For example, `GetLength` is a better name than `GetInt`.
 * Don't use terms like `Enum`, `Class` or `Struct` in a name.
 
@@ -67,19 +58,19 @@ Bad examples include `SearchExamination` (a page to search for examinations), Co
 ```csharp
 // GOOD
 public class Employee
-{ 
+{
     public Employee Get()
     {
-    } 
-    
+    }
+
     public void Delete()
     {
     }
-  
+
     public void AddNewJob()
     {
     }
-    
+
     public void RegisterForMeeting()
     {
     }
@@ -88,7 +79,7 @@ public class Employee
 ```csharp
 // BAD
 public class Employee
-{ 
+{
     public void GetEmployee()
     {
     }
@@ -136,23 +127,6 @@ Name events with a verb or a verb phrase (e.g. Click, Deleted, Closing, Minimizi
 public event EventHandler<SearchArgs> Search;
 ```
 
-## Use -ing and -ed to express pre-events and post-events (SDCS-1417) [2]
-For example, a close event that is raised before a window is closed would be called `Closing`, and one that is raised after the window is closed would be called `Closed`. Don't use `Before` or `After` prefixes or suffixes to indicate pre and post events.
-
-Suppose you want to define events related to the deletion of an object. Avoid defining the `Deleting` and `Deleted` events as `BeginDelete` and `EndDelete`. Define those events as follows:
-* Deleting: Occurs just before the object is getting deleted
-* Delete: Occurs when the object needs to be deleted by the event handler.
-* Deleted: Occurs when the object is already deleted.
-
-**Important:** To clarify moment of event execution summary for the event should be written describing exact moment of time when event would be raised
-Example:
-* Deleting (Summary: event is raised before deleting)
-* Deleted (Summary: event is raised after deleting is finished)
-
-**Note:** Avoid events that have undetermined moment of execution like
-
-Deleting (Summary: Event is raised at some point while deleting executes)
-
 ## Prefix an event handler with On (SDCS-1418) [2]
 It is good practice to prefix the method that handles an event with On. For example, a method that handles the Closing event can be named `OnClosing`.
 
@@ -162,7 +136,7 @@ If the name of an extension method conflicts with another member or extension me
 ## Post-fix asynchronous methods with Async of TaskAsync (SDCS-1420) [2]
 The general convention for methods that return `Task` or `Task<TResult>` is to post-fix them with Async, but if such a method already exists, use `TaskAsync` instead.
 
-## Identifiers that refer to a collection type should have plural names (SDCS-1421) [2]
+## Write 'private' and 'internal' modifiers explicitly. (SDCS-1421) [1]
+**Note:** In Visual Studio with Resharper these settings can be found at path 'Resharper -> Options -> Code Editing -> C# -> Code Style -> Use explicit private/internal modifier'.
 
-## Use correct names for enums (SDCS-1422) [1]
-When you define a simple enum (e.g. `SeasonOfYear`) use singular form, in case flag enum use plural form (e.g. `FilePermissions`). 
+## Identifiers that refer to a collection type should have plural names (SDCS-1422) [2]
