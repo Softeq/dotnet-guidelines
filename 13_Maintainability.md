@@ -1,4 +1,7 @@
 # Maintainability
+## Methods should not exceed 13 statements (SDCS-1301) [2]
+A method that requires more than 13 statements is simply doing too much or has too many responsibilities. It also requires the human mind to analyze the exact statements to understand what the code is doing. Break it down into multiple small and focused methods with self-explaining names, but make sure the high-level algorithm is still clear.
+
 ## Make all members private and types internal sealed by default (SDCS-1302) [2]
 To make a more conscious decision on which members to make available to other classes, first restrict the scope as much as possible. Then carefully decide what to expose as a public member or type.
 
@@ -14,14 +17,14 @@ All DLLs should be named according to the pattern `Company.Component.dll` where 
 
 As an example, consider a group of classes organized under the namespace `Softeq.Web.Binding` exposed by a certain assembly. According to this guideline, that assembly should be called `Softeq.Web.Binding.dll`.
 
+**Exception:** If you decide to combine classes from multiple unrelated namespaces into one assembly, consider suffixing the assembly name with Core, but do not use that suffix in the namespaces. For instance, Softeq.Toolkit.Core.dll.
+
 ## Name a source file to the type it contains (SDCS-1305) [1]
 Use Pascal casing to name the file and don't use underscores.
 
 ## Limit the contents of a source code file to one type (SDCS-1306) [2]
 
 **Exception:** Nested types should, for obvious reasons, be part of the same file.
-
-**Exception:** Types that only differ by their number of generic type parameters should be part of the same file.
 
 ## Name a source file to the logical function of the partial type (SDCS-1307) [2]
 When using partial types and allocating a part per file, name each file after the logical part that part plays. For example:
@@ -60,23 +63,23 @@ using Label = System.Web.UI.WebControls.Label;
 ## Don't use "magic" numbers (SDCS-1309) [1]
 Don't use literal values in your code, other than to define symbolic constants. For example:
 ```csharp
-public class Whatever 
+public class Whatever
 {
     public static readonly Color PapayaWhip = new Color(0xFFEFD5);
-    public const int MaxNumberOfWheels = 18; 
+    public const int MaxNumberOfWheels = 18;
 }
 ```
 Literals are allowed when their meaning is clear from the context, and not subject to future changes, For example:
 ```csharp
-mean = (a + b) / 2; // okay 
+mean = (a + b) / 2; // okay
 WaitMilliseconds(waitTimeInSeconds / 1000); // clear enough
 ```
 If the value of one constant depends on the value of another, attempt to make this explicit in the code.
 ```csharp
-public class SomeSpecialContainer 
-{ 
-    public const int MaxItems = 32; 
-    public const int HighWaterMark = 3 * MaxItems / 4; // at 75% 
+public class SomeSpecialContainer
+{
+    public const int MaxItems = 32;
+    public const int HighWaterMark = 3 * MaxItems / 4; // at 75%
 }
 ```
 **Note:** An enumeration can often be used for certain types of symbolic constants
@@ -119,15 +122,15 @@ var result = someField = GetSomeMethod();
 Use [Object Initializers](http://msdn.microsoft.com/en-us/library/bb384062.aspx):
 ```csharp
 // GOOD
-var startInfo = new ProcessStartInfo("myapp.exe") 
+var startInfo = new ProcessStartInfo("myapp.exe")
 {
     StandardOutput = Console.Output,
-    UseShellExecute = true 
+    UseShellExecute = true
 };
 ```
 ```csharp
 // BAD
-var startInfo = new ProcessStartInfo("myapp.exe"); 
+var startInfo = new ProcessStartInfo("myapp.exe");
 startInfo.StandardOutput = Console.Output;
 startInfo.UseShellExecute = true;
 ```
@@ -162,29 +165,32 @@ while (((condition == true) == true) == true)// where do you stop?
 ## Don't change a loop variable inside a for or foreach loop (SDCS-1315) [1]
 Updating the loop variable within the loop body is generally considered confusing, even more so if the loop variable is modified in more than one place. Although this rule also applies to foreach loops, an enumerator will typically detect changes to the collection the foreach loop is iteration over.
 ```csharp
-for (int index = 0; index < 10; ++index) 
-{ 
+for (int index = 0; index < 10; ++index)
+{
     if (_some condition_)
     {
-        index = 11; // Wrong! Use 'break' or 'continue' instead. 
+        index = 11; // Wrong! Use 'break' or 'continue' instead.
     }
 }
 ```
 
-## Always add a block after keywords such as if, else, while, for and foreach (SDCS-1317) [1]
+## Avoid nested loops (SDCS-1316) [2]
+A method that nests loops is more difficult to understand than one with only a single loop. In fact, in most cases nested loops can be replaced with a much simpler LINQ query that uses the from keyword twice or more to join the data.
+
+## Always add a block after keywords such as if, else, while, for, foreach and case (SDCS-1317) [1]
 This rules avoids possible confusion in statements of the form.
 ```csharp
 // GOOD
-if (b1) 
-{ 
-    if (b2) 
-    { 
-        Foo(); 
-    } 
-    else 
-    { 
-        Bar(); 
-    } 
+if (b1)
+{
+    if (b2)
+    {
+        Foo();
+    }
+    else
+    {
+        Bar();
+    }
 }
 ```
 ```csharp
@@ -194,31 +200,53 @@ if (b1)
 else Bar(); // which 'if' goes with the 'else'?
 ```
 
-## Always add a default block after the last case in a switch statement (SDCS-1318) [2]
-Add a descriptive comment if the default block is supposed to be empty. Moreover, if that block is not supposed to be reached throw an `InvalidOperationException` to detect future changes that may fall through the existing cases. This ensures better code, because all paths the code can travel have been thought about.
+## Switch formatting rules (SDCS-1318) [1]
+Always add a default block after the last case in a switch statement
+
+Add a descriptive comment if the default block is supposed to be empty. Moreover, if that block is not supposed to be reached throw an InvalidOperationException to detect future changes that may fall through the existing cases. This ensures better code, because all paths the code can travel have been thought about.
 ```csharp
-void Foo(string answer) 
-{ 
-    switch (answer) 
-    { 
-        case "no": 
-        {
-            Console.WriteLine("You answered with No"); 
-            break;
-        } 
-        case "yes":
-        { 
-            Console.WriteLine("You answered with Yes"); 
-            break;
-        }
-        default: 
-        {
-            // Not supposed to end up here. 
-            throw new InvalidOperationException("Unexpected answer " + answer);
-        } 
-    } 
+void Foo(string answer)
+{
+   switch (answer)
+   {
+       case "no":
+           Console.WriteLine("You answered with No");
+           break;
+       case "yes":
+           Console.WriteLine("You answered with Yes");
+           break;
+       default:
+           // Not supposed to end up here.
+           throw new InvalidOperationException("Unexpected answer " + answer);
+   }
 }
 ```
+Do not use curly brackets in 'cases'. If you need them because of local variables with the same names within 'cases', consider creating separate methods and calling them from 'cases'. If you still need to use brackets, you must have an argumentation why.
+
+## Finish every if-else-if statement with an else-part (SDCS-1319) [1]
+For example:
+```csharp
+void Foo(string answer)
+{
+   if (answer == "no")
+   {
+       Console.WriteLine("You answered with No");
+   }
+   else if (answer == "yes")
+   {
+       Console.WriteLine("You answered with Yes");
+   }
+   else
+   {
+       // What should happen when this point is reached? Ignored? If not,
+       // throw an InvalidOperationException.
+   }
+}
+```
+
+## Be reluctant with multiple return statements (SDCS-1320) [2]
+One entry, one exit is a sound principle and keeps control flow readable. However, if the method is very small and complies with guideline SDCS-1301 then multiple return statements may actually improve readability over some central boolean flag that is updated at various points.
+
 
 ## Don't use if-else statements instead of a simple (conditional) assignment (SDCS-1321) [2]
 Express your intentions directly.
@@ -229,17 +257,17 @@ return someString ?? "Unavailable";
 ```csharp
 // BAD
 string result;
- 
+
 if (someString != null)
-{ 
-    result = someString; 
+{
+    result = someString;
 }
 else
 {
     result = "Unavailable";
 }
- 
-return result; 
+
+return result;
 ```
 
 ## Encapsulate complex expressions in a method, property or  variable (SDCS-1322) [2]
@@ -252,45 +280,47 @@ if (member.HidesBaseClassMember && (member.NodeType != NodeType.InstanceInitiali
 ```
 In order to understand what this expression is about, you need to analyze its exact details and all of its possible outcomes. Obviously, you can add an explanatory comment on top of it, but it is much better to replace this complex expression with a clearly named method:
 ```csharp
-if (NonConstructorMemberUsesNewKeyword(member)) 
-{ 
+if (NonConstructorMemberUsesNewKeyword(member))
+{
     // do something
 }
 ...
-private bool NonConstructorMemberUsesNewKeyword(Member member) 
-{ 
+private bool NonConstructorMemberUsesNewKeyword(Member member)
+{
     return member.HidesBaseClassMember &&
         (member.NodeType != NodeType.InstanceInitializer);
-} 
+}
 ```
 You still need to understand the expression if you are modifying it, but the calling code is now much easier to grasp.
 
-## Call the more overloaded method from other overloads (SDCS-1323) [2] 
+## Call the more overloaded method from other overloads (SDCS-1323) [2]
 This guideline only applies to overloads that are intended to provide optional arguments. Consider, for example, the following code snippet:
 ```csharp
-public class MyString 
+public class MyString
 {
     private string _someText;
- 
-    public int IndexOf(string phrase) 
-    { 
+
+    public int IndexOf(string phrase)
+    {
         return IndexOf(phrase, 0);
     }
- 
-    public int IndexOf(string phrase, int startIndex) 
-    { 
+
+    public int IndexOf(string phrase, int startIndex)
+    {
         return IndexOf(phrase, startIndex, someText.Length - startIndex);
     }
- 
-    public virtual int IndexOf(string phrase, int startIndex, int count) 
-    { 
+
+    public virtual int IndexOf(string phrase, int startIndex, int count)
+    {
         return _someText.IndexOf(phrase, startIndex, count);
-    } 
+    }
 }
 ```
 The class MyString provides three overloads for the IndexOf method, but two of them simply call the one with one more parameter. Notice that the same rule applies to class constructors; implement the most complete overload and call that one from the other overloads using the `this` operator. Also notice that the parameters with the same name should appear in the same position in all overloads.
 
 **Important:** If you also want to allow derived classes to override these methods, define the most complete overload as a protected virtual method that is called by all overloads.
+
+## Don't allow methods and constructors with more than three parameters (SDCS-1324) [2]
 
 ## Don't use ref or out parameters (SDCS-1325) [2]
 They make code less understandable and might cause people to introduce bugs. Instead, return compound objects.
@@ -315,7 +345,7 @@ public string OldProperty
 {
     get { return "The old property value."; }
 }
-  
+
 public string NewProperty
 {
     get { return "The new property value."; }
@@ -328,7 +358,7 @@ public string OldProperty
 {
     get { return "The old property value."; }
 }
-  
+
 public string NewProperty
 {
     get { return "The new property value."; }
