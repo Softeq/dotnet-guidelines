@@ -23,6 +23,8 @@ You generally don't want callers to be able to change an internal collection, so
 
 **Exception:** Immutable collections such as `ImmutableArray<T>`, `ImmutableList<T>` and `ImmutableDictionary<TKey, TValue>` prevent modifications from the outside and are thus allowed.
 
+**Note:** If you're using .NET 4.5, you can also use IReadOnlyCollection<T>, IReadOnlyList<T> or IReadOnlyDictionary<TKey, TValue>.
+
 ## Define parameters as specific as possible (SDCS-1106) [2]
 If your member needs a specific piece of data, define parameters as specific as that and don't take a container object instead. For instance, consider a method that needs a connection string that is exposed through a central IConfiguration interface. Rather than taking a dependency on the entire configuration, just define a parameter for the connection string. This not only prevents unnecessary coupling, it also improved maintainability in the long run.
 
@@ -30,11 +32,3 @@ If your member needs a specific piece of data, define parameters as specific as 
 
 ## Consider using domain-specific value types rather than primitives (SDCS-1107) [2]
 Instead of using strings, integers and decimals for representing domain-specific types such as an ISBN number, an email address or amount of money, consider created dedicated value objects that wrap both the data and the validation rules that apply to it. By doing this, you prevent ending up having multiple implementations of the same business rules, which both improves maintainability and prevents bugs.
-
-## Don't use mutually exclusive properties (SDCS-1108) [1]
-Having properties that cannot be used at the same time typically signals a type that represents two conflicting concepts. Even though those concepts may share some of their behavior and states, they obviously have different rules that do not cooperate.
-
-This violation is often seen in domain models and introduces all kinds of conditional logic related to those conflicting rules, causing a ripple effect that significantly increases the maintenance burden.
-
-## Properties, arguments and return values representing collections or tasks should never be null (SDCS-1109) [1]
-Returning null can be unexpected by the caller. Always return an empty collection instead of a null reference. When your member returns `Task` or `Task<T>`, return `Task.CompletedTask` or `Task.FromResult()`. This also prevents cluttering your code base with additional checks for null.
