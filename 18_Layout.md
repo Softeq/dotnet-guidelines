@@ -1,20 +1,43 @@
 # Layout
 ## Use a common layout (SDCS-1801) [1]
-* Keep the length of each line under 150 characters.
+* Keep the length of each line under 130 characters.
 * Use an indentation of 4 whitespaces, and don't use tabs
 * Keep one whitespace between keywords like if and the expression, but don't add whitespaces after ( and before ) such as: `if (condition == null)`.
 * Add a whitespace around operators, like +, -, ==, etc.
 * Always follow the keywords if, else, do, while, for and foreach with opening and closing curly braces, even though the language does not require it.
-* Always put opening and closing curly braces on a new line.
+* Always put opening and closing parentheses on a new line, except the case when the method has an empty implementation. In this case the operator brackets must be placed on the line as the method declaration
+```csharp
+var dto = new ConsumerDto() { }
+```
+* Don't indent object Initializers and initialize each property on a new line, so use a format like this:
+```csharp
+var dto = new ConsumerDto()
+ {
+     Id = 123,
+     Name = "Microsoft",
+     PartnerShip = PartnerShip.Gold
+ }
+```
+* Don't indent lambda statements and use a format like this:
+```csharp
+methodThatTakesAnAction.Do(x =>
+{
+   // code
+});
+```
+
 * Put the entire LINQ statement on one line, or start each keyword at the same indentation, like this:
 ```csharp
 var query = from product in products where product.Price > 10 select product;
 // or
-var query = 
-    from product in products 
-    where product.Price > 10 
+var query =
+    from product in products
+    where product.Price > 10
     select product;
 ```
+* Start the LINQ statement with all the from expressions and don't interweave them with restrictions.
+
+* Add an empty line between multi-line statements, between members, after the closing parentheses, between unrelated code blocks, around the #region keyword, and between the using statements of different root namespaces.
 
 ## Order and group namespaces according the company (SDCS-1802) [2]
 ```csharp
@@ -67,21 +90,3 @@ And then by inheritance modifiers:
 
 ## Avoid using #regions (SDCS-1804) [1]
 If the class looks too big consider refactoring it into set of classes according to SRP.
-
-## Use common style for breaking up long lines of code (SDCS-1805) [1]
-If a line of code looks too big consider breaking it. For method definitions and calls put each argument on a new line with a correct indent.
-```csharp
-public AzureIotHubCommunicationChannel(
-    CertificateStorage certificateStorage,
-    string assignedHub,
-    string deviceId)
-```
-In case of methods chain put each call on a new line:
-```csharp
-var converter = JsonSubtypesConverterBuilder
-   .Of(typeof(IMeasure), "type")
-   .RegisterSubtype(typeof(Temperature), MeasureType.Temperature)
-   .RegisterSubtype(typeof(Humidity), MeasureType.Humidity)
-   .SerializeDiscriminatorProperty()
-   .Build();
-```
