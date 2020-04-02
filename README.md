@@ -22,7 +22,7 @@ All rules must be named in the following format: **Meaningful title of the rule 
 * [12 Miscellaneous design](12_MiscellaneousDesign.md)
 * [13 Maintainability](13_Maintainability.md)
 * [14 Naming](14_Naming.md)
-* [14 Performance](15_Performance.md)
+* [15 Performance](15_Performance.md)
 * [16 Framework](16_Framework.md)
 * [17 Documentation](17_Documentation.md)
 * [18 Layout](18_Layout.md)
