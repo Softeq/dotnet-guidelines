@@ -21,7 +21,7 @@ When throwing or handling exceptions in code that uses `async`/`await` or a `Tas
 * Exceptions that occur within an `async`/`await` block and inside a Task's action are propagated to the awaiter.
 * Exceptions that occur in the code preceding the asynchronous block are propagated to the caller.
 
-## Always check an event handler delegate for null (SDCS-1206) [1]
+## Always check an event handler delegate for null (SDCS-1206) [1] <img src ="Images/fullCover.png" width="16" height="16">
 An event that has no subscribers is null, so before invoking, always make sure that the delegate list represented by the event variable is not null. Furthermore, to prevent conflicting changes from concurrent threads, use a temporary variable to prevent concurrent changes to the delegate.
 
 ```csharp
@@ -41,7 +41,7 @@ void RaiseNotifyEvent(NotifyEventArgs args)
 ## Use a method to raise each event (SDCS-1207) [2]
 Each event should have corresponding invocator.
 
-## Don't pass null as the sender argument when raising an event (SDCS-1208) [1]
+## Don't pass null as the sender argument when raising an event (SDCS-1208) [1] <img src ="Images/fullCover.png" width="16" height="16">
 Often an event handler is used to handle similar events from multiple senders. The sender argument is then used to get to the source of the event. Always pass a reference to the source (typically this) when raising the event. Furthermore don't pass null as the event data parameter when raising an event. If there is no event data, pass `EventArgs.Empty` instead of null.
 
 **Tip:** For static events provide class type as a sender.
@@ -70,7 +70,7 @@ class MyClass<T>
 }
 ```
 
-## Evaluate the result of a LINQ expression before returning it (SDCS-1210) [1]
+## Evaluate the result of a LINQ expression before returning it (SDCS-1210) [1] <img src ="Images/partlyCover.png" width="16" height="16" title="Shows suggestion to replace return LINQ expression using variable">
 Consider the following code snippet
 ```csharp
 public IEnumerable GetGoldMemberCustomers()
@@ -87,5 +87,5 @@ public IEnumerable GetGoldMemberCustomers()
 ```
 Since LINQ queries use deferred execution, returning query will actually return the expression tree representing the above query. Each time the caller evaluates this result using a foreach cycle or similar, the entire query is re-executed resulting in new instances of `GoldMember` every time. Consequently, you cannot use the == operator to compare multiple `GoldMember` instances. Instead, always explicitly evaluate the result of a LINQ query using `ToList()`, `ToArray()` or similar methods.
 
-## Do not use this and base prefixes unless it is required (SDCS-1211) [1] 
+## Do not use this and base prefixes unless it is required (SDCS-1211) [1] <img src ="Images/fullCover.png" width="16" height="16">
 In a class hierarchy, it is not necessary to know at which level a member is declared to use it. Refactoring derived classes is harder if that level is fixed in the code.

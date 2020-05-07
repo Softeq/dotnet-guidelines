@@ -40,7 +40,7 @@ public partial class MyClass
 }
 ```
 
-## Use using statements instead of fully qualified type names (SDCS-1308) [2]
+## Use using statements instead of fully qualified type names (SDCS-1308) [2] <img src ="Images/fullCover.png" width="16" height="16">
 Limit usage of fully qualified type names to prevent name clashing. For example, don't do this:
 ```csharp
 // GOOD
@@ -81,7 +81,7 @@ public class SomeSpecialContainer
 ```
 **Note:** An enumeration can often be used for certain types of symbolic constants
 
-## Consider using `var` for increasing readability (SDCS-1310) [2]
+## Consider using `var` for increasing readability (SDCS-1310) [2] <img src ="Images/fullCover.png" width="16" height="16">
 Apply implicit typing only when it really increases readability of the code.
 * Prefer using vars for long generic types
 ```csharp
@@ -109,13 +109,13 @@ var temperature = 10; // does developer really wanted to use integer type or it 
 ## Declare and initialize variables as late as possible (SDCS-1311) [2]
 Avoid the C and Visual Basic styles where all variables have to be defined at the beginning of a block, but rather define and initialize each variable at the point where it is needed.
 
-## Assign each variable in a separate statement (SDCS-1312) [1]
+## Assign each variable in a separate statement (SDCS-1312) [1] <img src ="Images/fullCover.png" width="16" height="16">
 Don't use confusing constructs like the one below:
 ```csharp
 var result = someField = GetSomeMethod();
 ```
 
-## Favor Object and Collection Initializers over separate statements (SDCS-1313) [2]
+## Favor Object and Collection Initializers over separate statements (SDCS-1313) [2] <img src ="Images/fullCover.png" width="16" height="16">
 Use [Object Initializers](http://msdn.microsoft.com/en-us/library/bb384062.aspx):
 ```csharp
 // GOOD
@@ -143,7 +143,7 @@ countries.Add("Netherlands");
 countries.Add("United States");
 ```
 
-## Don't make explicit comparisons to true or false (SDCS-1314) [1]
+## Don't make explicit comparisons to true or false (SDCS-1314) [1] <img src ="Images/partlyCover.png" width="16" height="16">
 It is usually bad style to compare a bool-type expression to true or false.
 ```csharp
 // GOOD
@@ -171,7 +171,7 @@ for (int index = 0; index < 10; ++index)
 }
 ```
 
-## Always add a block after keywords such as if, else, while, for and foreach (SDCS-1317) [1]
+## Always add a block after keywords such as if, else, while, for and foreach (SDCS-1317) [1] <img src ="Images/fullCover.png" width="16" height="16">
 This rules avoids possible confusion in statements of the form.
 ```csharp
 // GOOD
@@ -220,7 +220,7 @@ void Foo(string answer)
 }
 ```
 
-## Don't use if-else statements instead of a simple (conditional) assignment (SDCS-1321) [2]
+## Don't use if-else statements instead of a simple (conditional) assignment (SDCS-1321) [2] <img src ="Images/fullCover.png" width="16" height="16">
 Express your intentions directly.
 ```csharp
 // GOOD
@@ -306,7 +306,7 @@ If you use `as` to obtain a certain interface reference from an object, always e
 ## Don't comment out code (SDCS-1328) [2]
 Never check in code that is commented out. Nobody knows what to do when they encounter a block of commented-out code. Was it temporarily disabled for testing purposes? Was it copied as an example? Should I delete it?
 
-## Always add message to ObsoleteAttribute (SDCS-1329) [1]
+## Always add message to ObsoleteAttribute (SDCS-1329) [1] <img src ="Images/fullCover.png" width="16" height="16">
 Never add ObsoleteAttribute without a message. Message must contain information on what interface you should use instead of the obsolete one.
 ```csharp
 // GOOD

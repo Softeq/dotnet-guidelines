@@ -10,6 +10,14 @@ Each rule in this document has its importance level:
 | 1                 | Guidelines that you should never skip and should be applicable to all situations |
 | 2                 | Recommended guidelines                                                           |
 
+## Code Analysis
+
+| Icon  			| Description                                                                      |
+| :---------------- | :------------------------------------------------------------------------------- |
+| <img src ="Images/fullCover.png" width="50" height="50">   | Fully covered by Re-sharper                                                      |
+| <img src ="Images/partlyCover.png" width="50" height="50">  | Partly covered by Re-sharper                                                     |
+|                   | If no image, rules aren't covered by Re-sharper								   |
+
 ## Guidelines rules naming convention
 All rules must be named in the following format: **Meaningful title of the rule (SDSC-1234) \[1\]**, where 
 * **SDCS** is Softeq Development CSharp abbreviation.
@@ -26,3 +34,5 @@ All rules must be named in the following format: **Meaningful title of the rule 
 * [17 Documentation](17_Documentation.md) 
 * [18 Layout](18_Layout.md)
 * [Important resources](99_ImportantResources.md)
+* [DotSettings](SharedRules.DotSettings)
+* [Editorconfig](SharedRules.editorconfig)

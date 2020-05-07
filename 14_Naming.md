@@ -1,5 +1,5 @@
 # Naming
-## Use US English (SDCS-1401) [1]
+## Use US English (SDCS-1401) [1] <img src ="Images/partlyCover.png" width="16" height="16" title="Respeller will highlight non latin symbols">
 All type members, parameters and variables should be named using words from the American English language.
 * Choose easily readable, preferably grammatically correct names. For example, `HorizontalAlignment` is more readable than `AlignmentHorizontal`.
 * Favor readability over brevity. The property name `CanScrollHorizontally` is better than `ScrollableX` (an obscure reference to the X-axis).
@@ -7,7 +7,7 @@ All type members, parameters and variables should be named using words from the 
 
 **Exception:** In most projects, you will use words and phrases from your domain and names specific to your company.
 
-## Use proper casing for language elements (SDCS-1402) [1]
+## Use proper casing for language elements (SDCS-1402) [1] <img src ="Images/partlyCover.png" width="16" height="16" title="Respeller can suggest proper casing">
 | Language element        | Casing                       | Example          |
 | :---------------------- | :--------------------------- |----------------- |
 | Class, Struct           | Pascal                       | `AppDomain`      |
@@ -29,7 +29,7 @@ All type members, parameters and variables should be named using words from the 
 ## Don’t use protected, internal and public fields (SDCS-1403) [1]
 **Note:** They can be replaced with auto properties with appropriate access modifier.
 
-## Don't include numbers in variables, parameters and type members (SDCS-1404) [2]
+## Don't include numbers in variables, parameters and type members (SDCS-1404) [2] <img src ="Images/fullCover.png" width="16" height="16">
 In most cases they are a lazy excuse for not defining a clear and intention-revealing name.
 
 ## Use only well-known abbreviations (SDCS-1406) [2]
