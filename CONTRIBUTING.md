@@ -9,4 +9,4 @@ The repository is maintained using [Scaled Trunk-Based Development practices](ht
 ## Adding a new rule
 - Use the [proper name format](https://github.com/Softeq/dotnet-guidelines#guidelines-rules-naming-convention)
 - Keep rule description consistent and simple
-- Check R# schema can be extended to support the rule
+- Check if R# schema can be extended to support the rule
