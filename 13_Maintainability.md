@@ -72,7 +72,7 @@ public class Whatever
 Literals are allowed when their meaning is clear from the context, and not subject to future changes, For example:
 ```csharp
 mean = (a + b) / 2; // okay
-WaitMilliseconds(waitTimeInSeconds / 1000); // clear enough
+WaitMilliseconds(waitTimeInSeconds * 1000); // clear enough
 ```
 If the value of one constant depends on the value of another, attempt to make this explicit in the code.
 ```csharp
