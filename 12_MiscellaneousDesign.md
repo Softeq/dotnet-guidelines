@@ -64,6 +64,7 @@ class MyClass<T>
     }
 }
 ```
+ **Note:** In this case, classes of generic types are children of the SomeClass, so replacing T with the SomeClass (MyClass<SomeClass>) to make a cast is not allowed.
 
 ## Evaluate the result of a LINQ expression before returning it (SDCS-1210) [1]
 Consider the following code snippet
