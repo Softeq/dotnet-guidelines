@@ -42,7 +42,7 @@ Often an event handler is used to handle similar events from multiple senders. T
 **Exception:** On static events, the sender argument should be null.
 
 ## Use generic constraints if applicable (SDCS-1209) [1]
-Instead of casting to and from the object type in generic types or methods, use where constraints or the as operator to specify the exact characteristics of the generic parameter. For example:
+Instead of casting to and from the object type in generic types or methods, use where constraints or the as operator to specify the exact characteristics of the generic parameter (note that you can’t get rid of the generic parameter without violating the original logic). For example:
 ```csharp
 // GOOD
 class MyClass<T> where T : SomeClass
@@ -64,7 +64,6 @@ class MyClass<T>
     }
 }
 ```
- **Note:** In this case, classes of generic types are children of the SomeClass, so replacing T with the SomeClass (MyClass<SomeClass>) to make a cast is not allowed.
 
 ## Evaluate the result of a LINQ expression before returning it (SDCS-1210) [1]
 Consider the following code snippet
